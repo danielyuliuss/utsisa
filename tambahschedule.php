@@ -1,15 +1,20 @@
-<?php 
-    require 'readapi.php';
+<?php
+require 'readapi.php';
 
-    if(isset($_POST['submit'])){
-        $url = "http://localhost/utsisa/addschedule.php";
-        $namaKegiatan = $_POST['nama'];
-        $waktuKegiatan = date("Y-m-d H:i:s", strtotime($_POST['waktu']));
-        
-        $data = send_post($url, ["username"=>$_GET['username'], "name"=>$namaKegiatan, "datetime" => $waktuKegiatan]);
+session_start();
+if (!isset($_SESSION["username"])) {
+    header("location: login.php");
+}
 
-        header("location: ubahjadwal.php?username=".$_GET['username']);
-    }
+if (isset($_POST['submit'])) {
+    $url = "http://localhost/utsisa/addschedule.php";
+    $namaKegiatan = $_POST['nama'];
+    $waktuKegiatan = date("Y-m-d H:i:s", strtotime($_POST['waktu']));
+
+    $data = send_post($url, ["username" => $_GET['username'], "name" => $namaKegiatan, "datetime" => $waktuKegiatan]);
+
+    header("location: ubahjadwal.php?username=" . $_GET['username']);
+}
 
 ?>
 <!DOCTYPE html>
@@ -28,11 +33,11 @@
     <form action="" method="post">
         <div class="container">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="nama" name="nama" required/>
+                <input type="text" class="form-control" id="nama" name="nama" required />
                 <label for="nama">Nama Kegiatan</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="datetime-local" class="form-control" id="waktu" name="waktu" required/>
+                <input type="datetime-local" class="form-control" id="waktu" name="waktu" required />
                 <label for="waktu">Waktu Kegiatan</label>
             </div>
             <input type="hidden" name="username" value="<?php echo $_GET['username']; ?>">

@@ -2,19 +2,20 @@
 session_start();
 
 require 'readapi.php';
+require 'encrypt.php';
 
 if (isset($_POST['username'])) {
   $username = $_POST['username'];
-  $password = $_POST['password'];
+  $password = encrypt($_POST['password']);
 
   $url = "http://localhost/utsisa/logincheck.php";
   $data = ["username" => $username, "password" => $password];
   $result = send_post($url, $data);
 
-  if($result->msg == "success"){
+  if ($result->msg == "success") {
     $_SESSION["username"] = $result->data[0]->username;
     header("location: index.php");
-  }else{
+  } else {
     echo "<h4> Login Gagal Username / Password Salah </h4>";
   }
 }
@@ -31,6 +32,7 @@ if (isset($_POST['username'])) {
 </head>
 
 <body>
+<p class="fs-1 ms-3">Sistem Manajemen Artis Sederhana</p>
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-4">
@@ -47,6 +49,7 @@ if (isset($_POST['username'])) {
                 <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password" />
               </div>
               <button type="submit" class="btn btn-primary" name="submit">Login</button>
+              <a href="register.php" type="button" class="btn btn-primary" style="float:right">Register</a>
             </form>
           </div>
         </div>

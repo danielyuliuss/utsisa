@@ -1,6 +1,11 @@
 <?php 
 require 'readapi.php';
 
+session_start();
+if(!isset($_SESSION["username"])){
+    header("location: login.php");
+}
+
 if(isset($_GET['id'])){
     $url = 'http://localhost/utsisa/changecontract.php';
 

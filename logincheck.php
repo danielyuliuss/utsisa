@@ -1,11 +1,12 @@
 <?php
 require 'encrypt.php';
+require 'decrypt.php';
 
 $conn = mysqli_connect("localhost", "root", "", "utsisa");
 
 if (isset($_POST['username']) && $_POST['password']) {
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = decrypt($_POST['password']);
     $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
     $stmt->bind_param("ss", $username, $password);
     $stmt->execute();

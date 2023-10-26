@@ -1,6 +1,11 @@
 <?php
 require 'readapi.php';
 
+session_start();
+if(!isset($_SESSION["username"])){
+    header("location: login.php");
+}
+
 $username = "";
 if (isset($_GET['username'])) {
     $url = 'http://localhost/utsisa/showschedule.php';

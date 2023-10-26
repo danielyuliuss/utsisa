@@ -33,13 +33,14 @@ if (isset($_POST['username'])) {
 </head>
 
 <body>
+<p class="fs-1 ms-3">Sistem Manajemen Artis Sederhana</p>
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-4">
         <div class="card">
           <div class="card-header">Register</div>
           <div class="card-body">
-            <form>
+            <form action="" method="post">
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" placeholder="Enter your username" name="username" />
@@ -62,7 +63,10 @@ if (isset($_POST['username'])) {
                 </select>
               </div>
               <button type="submit" class="btn btn-primary" name="submit">Register</button>
+              <a href="login.php" type="button" class="btn btn-primary" style="float:right">Login</a>
             </form>
+
+
           </div>
         </div>
       </div>
