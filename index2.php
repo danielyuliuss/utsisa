@@ -3,7 +3,7 @@ require 'readapi.php';
 session_start();
 
 //TESTING ONLY
-$_SESSION['username'] = "manager";
+$_SESSION['username'] = "artis";
 
 // cek session apakah ada user login dengan key username
 if (isset($_SESSION['username'])) {
@@ -37,6 +37,7 @@ if (isset($_SESSION['username'])) {
     $roleUser =  $data->role;
 
     if ($roleUser === "artis") {
+
     } else if ($roleUser === "admin") {
 
         echo "<div class='row'>";
@@ -49,7 +50,7 @@ if (isset($_SESSION['username'])) {
             }
 
             $status = "";
-            if (!$user->is_deleted) {
+            if ($user->is_active) {
                 $status = '<p class="card-text" style="color:green;">Status: Akun Aktif </p>';
             } else {
                 $status = '<p class="card-text" style="color:red;">Status: Akun Nonaktif </p>';
@@ -75,7 +76,7 @@ if (isset($_SESSION['username'])) {
         }
     } else if ($roleUser === "manager") {
         $dataUsers = $data->data_users;
-
+        echo "<h2 class='ms-3'>Daftar Artis</h2>";
         echo "<div class='row'>";
 
         //Code Tampil Data Artis
@@ -86,7 +87,7 @@ if (isset($_SESSION['username'])) {
             }
 
             $status = "";
-            if (!$user->is_active) {
+            if ($user->is_active) {
                 $status = '<p class="card-text" style="color:green;">Status: Akun Aktif </p>';
             } else {
                 $status = '<p class="card-text" style="color:red;">Status: Akun Nonaktif </p>';
@@ -111,10 +112,10 @@ if (isset($_SESSION['username'])) {
         }
 
 
-        echo "<div class='row'>";
-
         // Code Tampil Data Kontrak
-
+        echo "<h2 class='ms-3'>Daftar Kontrak</h2>";
+        echo "<div class='row'>";
+        
         $dataKontrak = $data->data_contracts;
         $i = 1;
         foreach ($dataKontrak as $kontrak) {
