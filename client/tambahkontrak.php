@@ -8,7 +8,7 @@ if(!isset($_SESSION["username"])){
 
 $usernameManager = $_SESSION['username'];
 
-$urlArtist = "http://localhost/utsisa/showartists.php";
+$urlArtist = "http://localhost/utsisa/server/showartists.php";
 $data = [];
 $resultArtists = send_post($urlArtist, $data);
 $dataArtist = $resultArtists->data_users;
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $dateEnd = date("Y-m-d", strtotime($_POST['dateEnd']));
     $fee = $_POST['price'];
 
-    $url = "http://localhost/utsisa/addcontract.php";
+    $url = "http://localhost/utsisa/server/addcontract.php";
     $data = ["name" => $name, "artist_username" => $artistUsername, "date_start" => $dateStart, "date_end" =>  $dateEnd, "fee" => $fee, "manager_username" => $usernameManager];
     $resultAdd = send_post($url, $data);
 

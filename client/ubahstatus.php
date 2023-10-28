@@ -10,7 +10,7 @@ if(isset($_GET['status'])){
     $status = $_GET['status'];
     $username = $_GET['username'];
 
-    $url = "http://localhost/utsisa/changestatus.php";
+    $url = "http://localhost/utsisa/server/changestatus.php";
     $data = ["status"=>$status, "username"=>$username];
 
     $result = send_post($url, $data);

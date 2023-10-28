@@ -4,7 +4,7 @@ function encrypt($plain_text)
     $ciphering = "aes-256-cbc";
     $options = 0;
     $encryption_iv = '0813366793211357';
-    $encryption_key = "GeeksforGeeks";
+    $encryption_key = "IniKunciDecrypt";
 
     $encryption = openssl_encrypt(
         $plain_text,

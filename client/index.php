@@ -4,7 +4,7 @@ session_start();
 
 // cek session apakah ada user login dengan key username
 if (isset($_SESSION['username'])) {
-    $url = 'http://localhost/utsisa/show_data.php';
+    $url = 'http://localhost/utsisa/server/show_data.php';
 
     // ambil username dari session lalu post data
     $data = ['user_username' => $_SESSION['username']];
@@ -24,7 +24,7 @@ if (isset($_SESSION['username'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 </head>
 
-<body>
+<body style>
     <p class="fs-1 ms-3">Sistem Manajemen Artis Sederhana</p>
     <?php
     if ($data->msg === "failed") {
@@ -37,7 +37,7 @@ if (isset($_SESSION['username'])) {
     if ($roleUser === "artis") {
         $dataJadwal = $data->data_schedules;
         echo "<h2 class='ms-3'>Daftar Jadwal</h2>";
-        echo "<div class='row justify-content-start'>";
+        echo "<div class='row'>";
 
         //Code Tampil Data Jadwal
         $i = 1;
@@ -93,9 +93,10 @@ if (isset($_SESSION['username'])) {
                 <p class="card-text mb-0">Artis : ' . $kontrak->user_username . '</p>
                 <p class="card-text mb-0">Fee : Rp.' . $kontrak->fee . '</p>
                 <p class="card-text">Manager : ' . $kontrak->manager_username . '</p>
-                <p class="card-text">' . $status . '</p>';
+                <p class="card-text">' . $status . '</p>
+                <a href="cetakpdf.php?id=' . $kontrak->id . '" class="btn btn-primary">PDF</a>';
             if ($kontrak->status == "pending") {
-                $string .= '<a href="terimatolakkontrak.php?res=terima&id=' . $kontrak->id . '" class="btn btn-success">Terima</a>
+                $string .= '<a href="terimatolakkontrak.php?res=terima&id=' . $kontrak->id . '" class="btn btn-success ms-1">Terima</a>
                 <a href="terimatolakkontrak.php?res=tolak&id=' . $kontrak->id . '" class="btn btn-danger">Tolak</a>';
             }
             $string .= '</div></div></div>';

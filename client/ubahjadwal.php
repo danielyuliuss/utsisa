@@ -8,7 +8,7 @@ if(!isset($_SESSION["username"])){
 
 $username = "";
 if (isset($_GET['username'])) {
-    $url = 'http://localhost/utsisa/showschedule.php';
+    $url = 'http://localhost/utsisa/server/showschedule.php';
 
     $username = $_GET['username'];
 

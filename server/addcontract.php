@@ -1,5 +1,5 @@
 <?php
-require 'encrypt.php';
+require '../encrypt.php';
 
 $conn = mysqli_connect("localhost", "root", "", "utsisa");
 

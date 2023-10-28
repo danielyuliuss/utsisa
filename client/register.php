@@ -9,7 +9,7 @@ if (isset($_POST['username'])) {
   $role = $_POST['role'];
   $name = $_POST['name'];
 
-  $url = "http://localhost/utsisa/registeraccount.php";
+  $url = "http://localhost/utsisa/server/registeraccount.php";
   $data = ["username" => $username, "password" => $password, "role" => $role, "name" => $name];
   $result = send_post($url, $data);
 

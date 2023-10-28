@@ -1,5 +1,5 @@
 <?php
-require 'decrypt.php';
+require '../decrypt.php';
 function send_post($url, $data)
 {
     $options = [

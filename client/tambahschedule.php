@@ -7,7 +7,7 @@ if (!isset($_SESSION["username"])) {
 }
 
 if (isset($_POST['submit'])) {
-    $url = "http://localhost/utsisa/addschedule.php";
+    $url = "http://localhost/utsisa/server/addschedule.php";
     $namaKegiatan = $_POST['nama'];
     $waktuKegiatan = date("Y-m-d H:i:s", strtotime($_POST['waktu']));
 

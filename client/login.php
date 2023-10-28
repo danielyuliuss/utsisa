@@ -2,13 +2,13 @@
 session_start();
 
 require 'readapi.php';
-require 'encrypt.php';
+require '../encrypt.php';
 
 if (isset($_POST['username'])) {
   $username = $_POST['username'];
   $password = encrypt($_POST['password']);
 
-  $url = "http://localhost/utsisa/logincheck.php";
+  $url = "http://localhost/utsisa/server/logincheck.php";
   $data = ["username" => $username, "password" => $password];
   $result = send_post($url, $data);
 

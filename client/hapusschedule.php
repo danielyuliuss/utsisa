@@ -7,7 +7,7 @@ if(!isset($_SESSION["username"])){
 }
 
 if(isset($_GET['id'])){
-    $url = "http://localhost/utsisa/deleteschedule.php";
+    $url = "http://localhost/utsisa/server/deleteschedule.php";
     $id = $_GET['id'];
     
     $data = send_post($url, ["id"=>$id]);
