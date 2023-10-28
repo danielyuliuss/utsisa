@@ -208,6 +208,7 @@ if (isset($_SESSION['username'])) {
                 <p class="card-text mb-0">Fee : Rp.' . $kontrak->fee . '</p>
                 <p class="card-text">Manager : ' . $kontrak->manager_username . '</p>
                 <p class="card-text">' . $status . '</p>
+                <a href="cetakpdf.php?id=' . $kontrak->id . '" class="btn btn-primary">PDF</a>
               </div>
             </div>
           </div>';
